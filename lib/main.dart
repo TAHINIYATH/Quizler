@@ -44,13 +44,35 @@ class _QuizpageState extends State<Quizpage> {
       bool correctanswer = quizbrain.getQuestionanswer();
       if (quizbrain.isFinished() == true) {
         Alert(
-          context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz.',
-        ).show();
+            context: context,
+            title: 'Finished!',
+            desc: 'You\'ve reached the end of the quiz.',
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "Restart",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () {
+// Action to perform when Button 1 is pressed
+                  Navigator.pop(context);
+                },
+                color: Color.fromRGBO(0, 179, 134, 1.0),
+              ),
+              DialogButton(
+                child: Text(
+                  "cancle",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () {
+// Action to perform when Button 2 is pressed
+                  Navigator.pop(context);
+                },
+                color: Color.fromRGBO(231, 76, 60, 1.0), // Set button color
+              ),
+            ]).show();
 
         quizbrain.reset();
-
         scorekeeper = [];
       } else {
         if (correctanswer == userpickedanswer) {
@@ -146,3 +168,32 @@ class _QuizpageState extends State<Quizpage> {
     );
   }
 }
+// Alert(
+// context: context,
+// title: "Alert Title",
+// desc: "Alert Description",
+// buttons: [
+// DialogButton(
+// child: Text(
+// "Button 1",
+// style: TextStyle(color: Colors.white, fontSize: 20),
+// ),
+// onPressed: () {
+// // Action to perform when Button 1 is pressed
+// Navigator.pop(context);
+// },
+// color: Color.fromRGBO(0, 179, 134, 1.0), // Set button color
+// ),
+// DialogButton(
+// child: Text(
+// "Button 2",
+// style: TextStyle(color: Colors.white, fontSize: 20),
+// ),
+// onPressed: () {
+// // Action to perform when Button 2 is pressed
+// Navigator.pop(context);
+// },
+// color: Color.fromRGBO(231, 76, 60, 1.0), // Set button color
+// ),
+// ],
+// )
